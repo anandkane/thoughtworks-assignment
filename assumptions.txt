@@ -1,0 +1,21 @@
+Conference Track Management
+
+Assumptions/Adjustments
+
+* Each track is divided into multiple sessions and each session is further divided into multiple slots.
+* Minimum and maximum durations of talks are configurable with a default value of 5 and 240 respectively.
+* Validati0on strategy to handle Talks with duration shorter than minimum talk duration is configurable. The default action is to increase it to minimum duration. 
+* Validation Strategy to handle invalid tasks (e.g. with duration more than maximum talk duration) is configurable. Default is to silently ignore those.
+* Maximum number of tracks is configurable with a default value of 3.
+
+HLD
+The High Level Design is summarized by the following abstractions.
+
+* InputProcessor: This abstraction is responsible for converting the input into list of Talk instances.
+* Conference: Collection of Tracks.
+* Track: Collection of Sessions.
+* Session: Period of time available for various activities like Talks, Lunch, Networking etc.
+* Talk: A Talk entry created by the InputProcessor. It is later assigned to a Session by AllocationStrategy.
+* AllocationStrategy: Configurable time allotment algorithm to assign a Talk to Session. The default strategy is to LongestFirstStrategy that attempts to allot time to Talks in decreasing order of their length.
+* ValidationStrategy: Configurable validation policy.
+* ConferenceVisitor: Visitor pattern implementation to allow implementation of custom operations on various conference components.

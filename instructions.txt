@@ -1,0 +1,13 @@
+
+
+Build
+* Change directory to conftrackmgmt
+* Run "mvn clean install"
+
+Resources
+* Copy application.properties file from the extracted folder to a desired location.
+* Change the input file name property in the file to the location of the input file
+
+Run
+* Change directory to conftrackmgmt
+* Run "java -jar target\conference-management.jar "path\to\application.properties"
